@@ -26,7 +26,7 @@ ruta4.agregarBase(centroDeTerapias);
 ruta4.eliminarBase(campoUniversitario);
 // ruta4.eliminarBase(centroDeTerapias);
 // ruta4.eliminarBase(jardinDeNinos);
-actualizar.htmlInverso(ruta4.listar());
+actualizar.html(ruta4.listar());
 
 let btnList = document.querySelector('#btnList');
 let btnListInvert = document.querySelector('#btnListInvert');

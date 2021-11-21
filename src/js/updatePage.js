@@ -5,8 +5,7 @@ export default class UpdatePage {
         let array = this.getProductsList(lista);
         
         this.deleteHtml();
-        // this.deleteProductList();
-        console.log(array)
+
         let block_to_insert;
         let container_block;
          
@@ -27,9 +26,7 @@ export default class UpdatePage {
         let array = this.getProductsList(lista);
 
         this.deleteHtml();
-        
-        // this.deleteProductList();
-        console.log(array)
+                
         let block_to_insert;
         let container_block;
          
