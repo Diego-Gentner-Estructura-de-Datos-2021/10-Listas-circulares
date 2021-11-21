@@ -1,10 +1,12 @@
 export default class Ruta {
-
+    
+    // Constructor
     constructor() {
         this._inicio = null;
         this._ultimo = null;
-    } // Constructor
+    }
 
+    // Agregar Base
     agregarBase(base) {
 
         if (this._inicio === null) {
@@ -22,8 +24,9 @@ export default class Ruta {
             return base;
         }
 
-    } // Agregar Base
+    }
 
+    // Eliminar Base
     eliminarBase(base) {
 
         if (this._inicio === null) {
@@ -34,20 +37,22 @@ export default class Ruta {
         if (this._inicio == this._ultimo) {
             this._inicio = null;
             this._ultimo = null;
-            console.log('Borrado el primer y ultimo elemento')
+            console.log('Borrado el primer y ultimo elemento');
             return base;
         }
 
         if (this._inicio._siguiente._nombre == this._inicio._nombre || this._inicio._anterior._nombre == this._inicio._nombre) {
             this._inicio = null;
             this._ultimo = null;
+            console.log('Borrado satisfactoriamente');
             return;
         }
 
         this._eliminarPorBusqueda(base);
 
-    } // Eliminar Base
+    }
 
+    // Eliminar por busqueda
     _eliminarPorBusqueda(elementoBorrar) {
 
         let elim=null;
@@ -58,19 +63,20 @@ export default class Ruta {
             this._inicio._anterior=this._ultimo;
             this._ultimo._siguiente = this._inicio;
             elim._siguiente=null;
+            console.log('Borrado satisfactoriamente');
             return elim;
           }
 
         let temp = this._inicio;
 
         while(temp._siguiente != this._inicio){
-            console.log('H')
           if (temp._siguiente._nombre == elementoBorrar._nombre) {
             elim=temp._siguiente;
             temp._siguiente=temp._siguiente._siguiente;
             temp._siguiente._anterior = temp;
             elim._siguiente=null;
             this._ultimo = this._inicio._anterior;
+            console.log('Borrado satisfactoriamente');
             return elim;
           } else {
             temp=temp._siguiente;
@@ -79,27 +85,16 @@ export default class Ruta {
         return elim;
     }
 
+
+    // Listar
     listar() {
         console.log(this._inicio);
-    } // Listar
+    }
 
+    // Listar Inverso
     listarInverso() {
         console.log(this._ultimo);
-    } // Listar Inverso
-
-    buscarBase(base) {
-        let temp = this._inicio;
-
-        if (base._nombre == temp._nombre) {
-            return temp;
-        } else {
-            if (temp == this._ultimo) {
-                return null;
-            } else {
-                temp = temp._siguiente;
-                this.buscarBase(base);
-            }
-        }
     }
+
 
 }
