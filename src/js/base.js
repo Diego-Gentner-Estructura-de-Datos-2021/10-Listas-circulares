@@ -7,4 +7,8 @@ export default class Base {
         this._anterior = null;
     }
 
+    info() {
+        return `Nombre: ${this._nombre} Minutos: ${this._minutos}`
+    }
+
 }
