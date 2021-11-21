@@ -24,14 +24,11 @@ export default class UpdatePage {
     getProductsList(lista) {
         let list = [];
         let current = lista;
-        let x = 0;
-
+        
         do {
             list.push(current);
             current = current._siguiente;
-            x++;
-        } while (x < 10);
-        console.log(list);
+        } while (current._nombre != lista._nombre);
         return list;
     }
 
