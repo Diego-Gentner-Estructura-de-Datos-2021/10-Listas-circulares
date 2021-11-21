@@ -2,6 +2,15 @@ import Base from './base.js';
 import Ruta from './ruta.js'
 import UpdatePage from './updatePage.js'
 
+const list = () => {
+    actualizar.html(ruta4.listar()); 
+}
+
+const listInvert = () => {
+    actualizar.htmlInverso(ruta4.listar()); 
+
+}
+
 let inverso = false;
 
 let actualizar = new UpdatePage();
@@ -17,7 +26,9 @@ ruta4.agregarBase(centroDeTerapias);
 ruta4.eliminarBase(campoUniversitario);
 // ruta4.eliminarBase(centroDeTerapias);
 // ruta4.eliminarBase(jardinDeNinos);
+actualizar.htmlInverso(ruta4.listar());
 
-// ruta4.listar();
-// ruta4.listarInverso();
-actualizar.html(ruta4.listar());
+let btnList = document.querySelector('#btnList');
+let btnListInvert = document.querySelector('#btnListInvert');
+btnList.addEventListener('click', list);
+btnListInvert.addEventListener('click', listInvert);

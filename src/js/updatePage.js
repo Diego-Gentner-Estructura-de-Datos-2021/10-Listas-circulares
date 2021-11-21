@@ -4,6 +4,7 @@ export default class UpdatePage {
 
         let array = this.getProductsList(lista);
         
+        this.deleteHtml();
         // this.deleteProductList();
         console.log(array)
         let block_to_insert;
@@ -21,6 +22,29 @@ export default class UpdatePage {
         });
     }
 
+    htmlInverso(lista) {
+
+        let array = this.getProductsList(lista);
+
+        this.deleteHtml();
+        
+        // this.deleteProductList();
+        console.log(array)
+        let block_to_insert;
+        let container_block;
+         
+        array.forEach(element => {
+                block_to_insert = document.createElement( 'div' );
+                block_to_insert.classList.add("productsIndex");
+                block_to_insert.innerHTML = `${element.info()}`;
+                 
+                container_block = document.getElementById('listaHtml');
+
+                container_block.prepend(block_to_insert);
+
+        });
+    }
+
     getProductsList(lista) {
         let list = [];
         let current = lista;
@@ -32,6 +56,11 @@ export default class UpdatePage {
         return list;
     }
 
-    // lista._siguiente._nombre != lista._nombre
+    deleteHtml() {
+        const elements = document.getElementsByClassName('productsIndex');
+        while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
 
 }

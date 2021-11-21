@@ -88,13 +88,11 @@ export default class Ruta {
 
     // Listar
     listar() {
-        console.log(this._inicio);
         return this._inicio;
     }
 
     // Listar Inverso
     listarInverso() {
-        console.log(this._ultimo);
         return this._ultimo;
     }
 
