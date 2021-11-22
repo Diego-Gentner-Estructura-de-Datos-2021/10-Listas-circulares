@@ -2,39 +2,51 @@ import Base from './base.js';
 import Ruta from './ruta.js'
 import UpdatePage from './updatePage.js'
 
+// Establecer nueva lista circular y actualizar html
+let rutaCircular = new Ruta();
+let actualizar = new UpdatePage();
+
 const list = () => {
-    actualizar.html(ruta4.listar()); 
+    actualizar.html(rutaCircular.listar()); 
 }
 
 const listInvert = () => {
-    actualizar.htmlInverso(ruta4.listar()); 
-
+    actualizar.htmlInverso(rutaCircular.listar()); 
 }
 
-let inverso = false;
+const addBase = () => {
+    let baseName = document.querySelector('#baseName').value;
+    let baseMinutes = document.querySelector('#baseMinutes').value;
 
-let actualizar = new UpdatePage();
+    if (baseName == "" || baseMinutes == "" || baseName == " " || baseMinutes == " ") {
+        Swal.fire('Error','No hay nada escrito','error')
+        return;
+    }
 
-let campoUniversitario = new Base('Campo Olimpico Universitario', 85);
-let jardinDeNinos = new Base('Gabriela Mistral', 85);
-let centroDeTerapias = new Base('Centro de Terapias de la Conducta', 85);
+    let nuevaBase = new Base(baseName, baseMinutes);
+    rutaCircular.agregarBase(nuevaBase);
+    actualizar.updateRutaSelect(nuevaBase);
+    list();
+}
 
-let ruta4 = new Ruta();
-ruta4.agregarBase(campoUniversitario);
-actualizar.updateRutaSelect(campoUniversitario);
-ruta4.agregarBase(jardinDeNinos);
-actualizar.updateRutaSelect(jardinDeNinos);
-ruta4.agregarBase(centroDeTerapias);
-actualizar.updateRutaSelect(centroDeTerapias);
-ruta4.eliminarBase(campoUniversitario);
-actualizar.removeRutaSelect(campoUniversitario);
-// ruta4.eliminarBase(centroDeTerapias);
-// ruta4.eliminarBase(jardinDeNinos);
-actualizar.html(ruta4.listar());
-
+// Eventos de funcion para btn de Listar
 let btnList = document.querySelector('#btnList');
-let btnListInvert = document.querySelector('#btnListInvert');
 btnList.addEventListener('click', list);
+
+// Eventos de funcion para btn de Listar Inverso
+let btnListInvert = document.querySelector('#btnListInvert');
 btnListInvert.addEventListener('click', listInvert);
 
+// Eventos de funcion para btn de Agregar Ruta
+let btnAdd = document.querySelector('#btnAdd');
+btnAdd.addEventListener('click', addBase);
 
+
+
+
+
+// let campoUniversitario = new Base('Campo Olimpico Universitario', 85);
+// let jardinDeNinos = new Base('Gabriela Mistral', 85);
+// let centroDeTerapias = new Base('Centro de Terapias de la Conducta', 85);
+// actualizar.updateRutaSelect(jardinDeNinos);
+// actualizar.removeRutaSelect(campoUniversitario);
