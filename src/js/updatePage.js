@@ -60,4 +60,20 @@ export default class UpdatePage {
         }
     }
 
+    updateRutaSelect(ruta) {
+        let selector = document.getElementById("selectRuta");
+        var option = document.createElement("option");
+        option.setAttribute('id',ruta._nombre);
+        option.text = ruta._nombre;
+        option.value = ruta._nombre;
+        selector.add(option);
+        return ruta;
+    }
+
+    removeRutaSelect(ruta) {
+        let selector = document.getElementById(`${ruta._nombre}`);
+        selector.remove();
+        return ruta;
+    }
+
 }

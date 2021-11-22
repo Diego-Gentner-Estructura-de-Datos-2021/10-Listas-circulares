@@ -1,0 +1,73 @@
+* {
+    font-family: 'M PLUS 2', sans-serif;
+}
+
+button {
+    font-weight: bold;
+}
+
+body {
+    padding-left: 2%;
+    padding-top: 1%;
+    background-color: rgb(185, 169, 166);
+}
+
+.btnDelete {
+    background-color: #f44336;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btnCard {
+    background-color: #496ad8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btnAdd {
+    background-color: #34990c;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #a32499;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+select {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+input {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; 
+}
