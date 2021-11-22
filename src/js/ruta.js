@@ -16,6 +16,11 @@ export default class Ruta {
             this._inicio._anterior = this._inicio;
             return base;
         } else {
+
+            if (base._nombre === this._ultimo._nombre || base._nombre === this._ultimo._siguiente._nombre) {
+                return null;
+            }
+
             this._ultimo._siguiente = base;
             this._ultimo._siguiente._anterior = this._ultimo;
             this._ultimo = this._ultimo._siguiente;
@@ -25,6 +30,7 @@ export default class Ruta {
         }
 
     }
+
 
     // Eliminar Base
     eliminarBase(base) {
@@ -88,6 +94,7 @@ export default class Ruta {
 
     // Listar
     listar() {
+        console.log(this._inicio);
         return this._inicio;
     }
 
