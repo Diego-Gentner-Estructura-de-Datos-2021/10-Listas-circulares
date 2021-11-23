@@ -7,11 +7,11 @@ let rutaCircular = new Ruta();
 let actualizar = new UpdatePage();
 
 const list = () => {
-    actualizar.html(rutaCircular.listar());
+    actualizar.html(rutaCircular.listar(), false);
 }
 
 const listInvert = () => {
-    actualizar.htmlInverso(rutaCircular.listar());
+    actualizar.html(rutaCircular.listar(), true);
 }
 
 const addBase = () => {

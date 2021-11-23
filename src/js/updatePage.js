@@ -1,6 +1,6 @@
 export default class UpdatePage {
 
-    html(lista) {
+    html(lista, boolean) {
 
         let array = this.getProductsList(lista);
         
@@ -19,33 +19,13 @@ export default class UpdatePage {
                  
                 container_block = document.getElementById('listaHtml');
 
-                container_block.appendChild(block_to_insert);
-
+                if (boolean) {
+                    container_block.prepend(block_to_insert);
+                } else {
+                    container_block.appendChild(block_to_insert);
+                }
             });   
         }
-    }
-
-    htmlInverso(lista) {
-
-        let array = this.getProductsList(lista);
-
-        this.deleteHtml();
-                
-        let block_to_insert;
-        let container_block;
-        if (array != null) {
-            array.forEach(element => {
-                block_to_insert = document.createElement( 'div' );
-                block_to_insert.classList.add("productsIndex");
-                block_to_insert.innerHTML = `${element.info()}`;
-                 
-                container_block = document.getElementById('listaHtml');
-
-                container_block.prepend(block_to_insert);
-
-            });    
-        }
-        
     }
 
     getProductsList(lista) {
