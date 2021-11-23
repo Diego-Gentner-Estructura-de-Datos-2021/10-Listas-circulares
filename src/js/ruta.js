@@ -106,5 +106,57 @@ export default class Ruta {
         return this._ultimo;
     }
 
+    crearTarjeta(base, hora, minutos) {
+
+        if (this._inicio._nombre == this._ultimo._nombre) {
+            return null;
+        }
+
+        if (this._inicio != null) {
+            console.log(Number(hora.substr(0,2)));
+            console.log(Number(hora.substr(3,5)));
+    
+            let temp = this._inicio;
+            let date = new Date(2000, 0, 1, Number(hora.substr(0,2)), Number(hora.substr(3,5)));
+            let timer = Number(minutos);
+    
+            console.log(temp._nombre);
+
+            do {
+
+                if (timer < temp._siguiente._minutos) {
+                    break;
+                }
+
+                date.setTime(date.getTime() + (temp._siguiente._minutos * 60000));
+
+                console.log(`El camión llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())} `);
+
+                timer -= temp._siguiente._minutos;
+                
+                temp = temp._siguiente;
+            } while (timer > 0);
+            
+        } else {
+            return null;
+        }
+
+    }
+
+    timeFormatted(hours, minutes) {
+
+        console.log(hours);
+        console.log(minutes);
+
+        let hora = hours.toString();
+        let minutos = minutes.toString();
+        if (hora.length == 1) {
+            hora = `0${hora}`
+        }
+        if (minutos.length == 1) {
+            minutos = `${minutos}0`
+        }
+        return `${hora}:${minutos}`
+    }
 
 }

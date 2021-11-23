@@ -26,7 +26,7 @@ const addBase = () => {
     let nuevaBase = new Base(baseName, baseMinutes);
 
     if (rutaCircular.agregarBase(nuevaBase) === null) {
-        Swal.fire('Error','La primera y ultima base no pueden ser iguales. ErrorCode: START_FINAL_SAME','error');
+        Swal.fire('Error','La misma base no puede agregarse de manera consecutiva. ErrorCode: CONSECUTIVE_OR_START_FINAL_SAME','error');
         throw new Error('START_FINAL_SAME');
     }
 
@@ -57,6 +57,33 @@ const removeBase = () => {
     list();
 }
 
+const createCard = () => {
+
+    let baseName = (document.getElementById('selectRuta').value);
+    let hour = (document.getElementById('horaSalida').value);
+    let minutes = (document.getElementById('minutosCirculacion'));
+
+    if (minutes.value > 2880) {
+        minutes.value = 2880;
+        minutes = minutes.value;
+        Swal.fire('Advertencia','Para proteger la integridad de tu dispositivo, se ha limitado a 2880 minutos (48 horas).','warning');
+    } else {
+        minutes = minutes = minutes.value;
+    }
+
+    if (baseName == "" || baseName == "null" || baseName == " " || baseName == null) {
+        Swal.fire('Espera','Debes llenar todos los campos.','warning');
+        return null;
+    }
+
+    if (rutaCircular.crearTarjeta(baseName, hour, minutes) === null) {
+        Swal.fire('Operación fallida','Debes tener 2 o más bases agregadas.','info');
+    }
+    
+
+}
+
+
 // Eventos de funcion para btn de Listar
 let btnList = document.querySelector('#btnList');
 btnList.addEventListener('click', list);
@@ -72,3 +99,7 @@ btnAdd.addEventListener('click', addBase);
 // Eventos de funcion para btn de Remover Ruta
 let btnRemove = document.querySelector('#deleteBase');
 btnRemove.addEventListener('click', removeBase);
+
+// Eventos de funcion para btn de Remover Ruta
+let btnAddCard = document.querySelector('#createCard');
+btnAddCard.addEventListener('click', createCard);

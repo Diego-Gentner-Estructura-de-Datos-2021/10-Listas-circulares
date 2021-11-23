@@ -49,11 +49,14 @@
 
         <!-- Boton -->
         <div class="form-group">
+            <label class="textBox" for=""><b>Ruta:</b></label>
             <select class="select" name="Hola" id="selectRuta">
                 <option value="null" disabled selected >Seleccionar</option>
             </select>
-            <input type="number" min="0" placeholder="Hora">
-            <input type="number" min="0" placeholder="Minutos"> <br><br>
+            <label class="textBox" for=""><b>Hora de Salida:</b></label>
+            <input id="horaSalida" type="time" min="0" placeholder="Hora">
+            <label class="textBox" for=""><b>Minutos en ruta:</b></label>
+            <input type="number" id="minutosCirculacion" placeholder="Minutos"> <br><br>
             <button class="btnCard" id="createCard" type="submit">Crear Tarjeta</button>
             <button class="btnDelete" id="deleteBase" type="submit">Eliminar base seleccionada</button>
         </div>
