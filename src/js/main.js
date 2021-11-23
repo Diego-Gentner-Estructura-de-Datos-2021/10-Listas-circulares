@@ -32,7 +32,7 @@ const addBase = () => {
 
     actualizar.updateRutaSelect(nuevaBase);
     list();
-    success();
+    actualizar.success();
 }
 
 const removeBase = () => {
@@ -50,9 +50,9 @@ const removeBase = () => {
         Swal.fire('Error','No se puede borrar algo eliminado/inexistente. ErrorCode: DELETE_NOT_FIND','error');
         throw new Error('DELETE_NOT_FIND');
     } else {
-        Swal.fire('Ok', `Se ha borrado ${temp._nombre}`, 'success')
+        Swal.fire('Eliminado', `<b>Se ha borrado:</b> ${temp._nombre}`, 'success')
     }
-    
+
     actualizar.removeRutaSelect(temp);
     list();
 }
@@ -72,34 +72,3 @@ btnAdd.addEventListener('click', addBase);
 // Eventos de funcion para btn de Remover Ruta
 let btnRemove = document.querySelector('#deleteBase');
 btnRemove.addEventListener('click', removeBase);
-
-// SweetAlert
-function success() {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-start',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer)
-          toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-      })
-      
-      Toast.fire({
-        icon: 'success',
-        title: 'Guardado'
-      })
-}
-
-
-// let campoUniversitario = new Base('Campo Olimpico Universitario', 85);
-// let jardinDeNinos = new Base('Gabriela Mistral', 85);
-// let centroDeTerapias = new Base('Centro de Terapias de la Conducta', 85);
-
-
-
-
-// actualizar.updateRutaSelect(jardinDeNinos);
-// actualizar.removeRutaSelect(campoUniversitario);
