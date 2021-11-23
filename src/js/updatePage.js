@@ -8,8 +8,11 @@ export default class UpdatePage {
 
         let block_to_insert;
         let container_block;
-         
-        array.forEach(element => {
+
+        console.log(array);
+
+        if (array != null) {
+            array.forEach(element => {
                 block_to_insert = document.createElement( 'div' );
                 block_to_insert.classList.add("productsIndex");
                 block_to_insert.innerHTML = `${element.info()}`;
@@ -18,7 +21,8 @@ export default class UpdatePage {
 
                 container_block.appendChild(block_to_insert);
 
-        });
+            });   
+        }
     }
 
     htmlInverso(lista) {
@@ -29,8 +33,8 @@ export default class UpdatePage {
                 
         let block_to_insert;
         let container_block;
-         
-        array.forEach(element => {
+        if (array != null) {
+            array.forEach(element => {
                 block_to_insert = document.createElement( 'div' );
                 block_to_insert.classList.add("productsIndex");
                 block_to_insert.innerHTML = `${element.info()}`;
@@ -39,7 +43,9 @@ export default class UpdatePage {
 
                 container_block.prepend(block_to_insert);
 
-        });
+            });    
+        }
+        
     }
 
     getProductsList(lista) {
@@ -47,8 +53,13 @@ export default class UpdatePage {
         let current = lista;
         
         do {
-            list.push(current);
-            current = current._siguiente;
+            if (current != null) {
+                list.push(current);
+                current = current._siguiente;   
+            } else {
+                list = null;
+                break;
+            }
         } while (current._nombre != lista._nombre);
         return list;
     }

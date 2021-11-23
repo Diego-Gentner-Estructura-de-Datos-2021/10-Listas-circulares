@@ -51,7 +51,7 @@ export default class Ruta {
             this._inicio = null;
             this._ultimo = null;
             console.log('Borrado satisfactoriamente');
-            return;
+            return new Ruta();
         }
 
         this._eliminarPorBusqueda(base);
@@ -71,9 +71,10 @@ export default class Ruta {
             elim._siguiente=null;
             console.log('Borrado satisfactoriamente');
             return elim;
-          }
+        }
 
         let temp = this._inicio;
+        let temp2;
 
         while(temp._siguiente != this._inicio){
           if (temp._siguiente._nombre == elementoBorrar._nombre) {
@@ -83,12 +84,14 @@ export default class Ruta {
             elim._siguiente=null;
             this._ultimo = this._inicio._anterior;
             console.log('Borrado satisfactoriamente');
-            return elim;
+            console.log(elim);
+            temp2 = elim;
+            return temp2;
           } else {
             temp=temp._siguiente;
           }
         }
-        return elim;
+        return null;
     }
 
 
