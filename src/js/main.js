@@ -5,6 +5,7 @@ import UpdatePage from './updatePage.js'
 // Establecer nueva lista circular y actualizar html
 let rutaCircular = new Ruta();
 let actualizar = new UpdatePage();
+let updateCard = false;
 
 const list = () => {
     actualizar.html(rutaCircular.listar(), false);
@@ -73,11 +74,18 @@ const createCard = () => {
 
     if (baseName == "" || baseName == "null" || baseName == " " || baseName == null) {
         Swal.fire('Espera','Debes llenar todos los campos.','warning');
+        actualizar.deleteCard();
         return null;
     }
 
-    if (rutaCircular.crearTarjeta(baseName, hour, minutes) === null) {
+    let temp = rutaCircular.crearTarjeta(baseName, hour, minutes);
+
+    if (temp === null) {
         Swal.fire('Operación fallida','Debes tener 2 o más bases agregadas.','info');
+        actualizar.deleteCard();
+    } else {
+        updateCard = true;
+        actualizar.mostrarTarjeta(temp);
     }
     
 

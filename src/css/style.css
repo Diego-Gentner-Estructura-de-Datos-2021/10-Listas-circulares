@@ -77,3 +77,15 @@ input {
 .textBox {
     padding-right: 0.1%;
 }
+
+.tarjeta { 
+    margin-right: 60%;
+    color: #0a0707; 
+    font-weight: bold;
+    font-size: 12px; 
+    text-align: left;
+    padding-left: 2%; 
+    background: #889ccf; 
+    overflow: hidden; 
+    margin-top: 2%;
+}

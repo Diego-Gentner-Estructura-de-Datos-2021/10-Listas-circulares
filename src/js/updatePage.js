@@ -28,6 +28,27 @@ export default class UpdatePage {
         }
     }
 
+    mostrarTarjeta(lista) {
+
+        this.deleteCard();
+
+        let block_to_insert;
+        let container_block;
+
+        console.log(lista);
+
+        if (lista != null || lista.length > 0) {
+            lista.forEach(element => {
+                block_to_insert = document.createElement( 'div' );
+                block_to_insert.classList.add("cardElements");
+                block_to_insert.innerHTML = `${element}`;
+                 
+                container_block = document.getElementById('tarjetaCreada');
+                container_block.appendChild(block_to_insert);
+            });   
+        }
+    }
+
     getProductsList(lista) {
         let list = [];
         let current = lista;
@@ -46,6 +67,13 @@ export default class UpdatePage {
 
     deleteHtml() {
         const elements = document.getElementsByClassName('productsIndex');
+        while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+        }
+    }
+
+    deleteCard() {
+        const elements = document.getElementsByClassName('cardElements');
         while(elements.length > 0){
         elements[0].parentNode.removeChild(elements[0]);
         }

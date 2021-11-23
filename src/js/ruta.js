@@ -107,20 +107,25 @@ export default class Ruta {
     }
 
     crearTarjeta(base, hora, minutos) {
-
+        const answer = new Array;
         if (this._inicio._nombre == this._ultimo._nombre) {
             return null;
         }
-
         if (this._inicio != null) {
             console.log(Number(hora.substr(0,2)));
             console.log(Number(hora.substr(3,5)));
-    
+
             let temp = this._inicio;
+
+            while (base != temp._nombre) {
+                temp = temp._siguiente;
+            }
+    
             let date = new Date(2000, 0, 1, Number(hora.substr(0,2)), Number(hora.substr(3,5)));
             let timer = Number(minutos);
     
-            console.log(temp._nombre);
+            console.log(`La ruta saldrá de ${temp._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`);
+            answer.push(`La ruta saldrá de ${temp._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`)
 
             do {
 
@@ -130,17 +135,17 @@ export default class Ruta {
 
                 date.setTime(date.getTime() + (temp._siguiente._minutos * 60000));
 
-                console.log(`El camión llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())} `);
+                console.log(`La ruta llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`);
+                answer.push(`La ruta llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`)
 
                 timer -= temp._siguiente._minutos;
                 
                 temp = temp._siguiente;
             } while (timer > 0);
-            
         } else {
             return null;
         }
-
+        return answer;
     }
 
     timeFormatted(hours, minutes) {
@@ -154,7 +159,7 @@ export default class Ruta {
             hora = `0${hora}`
         }
         if (minutos.length == 1) {
-            minutos = `${minutos}0`
+            minutos = `0${minutos}`
         }
         return `${hora}:${minutos}`
     }
