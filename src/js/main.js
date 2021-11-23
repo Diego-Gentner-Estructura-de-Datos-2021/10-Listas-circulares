@@ -36,13 +36,25 @@ const addBase = () => {
 }
 
 const removeBase = () => {
+    let baseName = (document.getElementById('selectRuta').value);
+    let temp = new Base(baseName, null);
 
-    // let baseName = document.querySelector('#selectBase').value;
-    console.log(document.getElementById('#selectRuta').value);
+    if (baseName == "" || baseName == "null" || baseName == " " || baseName == null) {
+        Swal.fire('Espera','Debes seleccionar un valor de la lista.','warning')
+        return null;
+    }
 
-    // console.log(baseName);
+    let temp2 = rutaCircular.eliminarBase(temp);
 
-
+    if (temp2 === null || temp2 == "null") {
+        Swal.fire('Error','No se puede borrar algo eliminado/inexistente. ErrorCode: DELETE_NOT_FIND','error');
+        throw new Error('DELETE_NOT_FIND');
+    } else {
+        Swal.fire('Ok', `Se ha borrado ${temp._nombre}`, 'success')
+    }
+    
+    actualizar.removeRutaSelect(temp);
+    list();
 }
 
 // Eventos de funcion para btn de Listar
