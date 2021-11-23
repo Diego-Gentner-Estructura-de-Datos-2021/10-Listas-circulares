@@ -9,8 +9,6 @@ export default class UpdatePage {
         let block_to_insert;
         let container_block;
 
-        console.log(array);
-
         if (array != null) {
             array.forEach(element => {
                 block_to_insert = document.createElement( 'div' );
@@ -34,8 +32,6 @@ export default class UpdatePage {
 
         let block_to_insert;
         let container_block;
-
-        console.log(lista);
 
         if (lista != null || lista.length > 0) {
             lista.forEach(element => {

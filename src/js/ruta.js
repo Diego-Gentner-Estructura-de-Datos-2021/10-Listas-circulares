@@ -20,7 +20,6 @@ export default class Ruta {
             if (base._nombre === this._ultimo._nombre || base._nombre === this._ultimo._siguiente._nombre) {
                 return null;
             }
-
             this._ultimo._siguiente = base;
             this._ultimo._siguiente._anterior = this._ultimo;
             this._ultimo = this._ultimo._siguiente;
@@ -30,7 +29,6 @@ export default class Ruta {
         }
 
     }
-
 
     // Eliminar Base
     eliminarBase(base) {
@@ -62,7 +60,6 @@ export default class Ruta {
     _eliminarPorBusqueda(elementoBorrar) {
 
         let elim=null;
-
         if (elementoBorrar._nombre == this._inicio._nombre){
             elim = this._inicio;
             this._inicio=this._inicio._siguiente;
@@ -75,7 +72,6 @@ export default class Ruta {
 
         let temp = this._inicio;
         let temp2;
-
         while(temp._siguiente != this._inicio){
           if (temp._siguiente._nombre == elementoBorrar._nombre) {
             elim=temp._siguiente;
@@ -94,16 +90,9 @@ export default class Ruta {
         return null;
     }
 
-
     // Listar
     listar() {
-        console.log(this._inicio);
         return this._inicio;
-    }
-
-    // Listar Inverso
-    listarInverso() {
-        return this._ultimo;
     }
 
     crearTarjeta(base, hora, minutos) {
@@ -112,34 +101,24 @@ export default class Ruta {
             return null;
         }
         if (this._inicio != null) {
-            console.log(Number(hora.substr(0,2)));
-            console.log(Number(hora.substr(3,5)));
 
             let temp = this._inicio;
-
             while (base != temp._nombre) {
                 temp = temp._siguiente;
             }
     
             let date = new Date(2000, 0, 1, Number(hora.substr(0,2)), Number(hora.substr(3,5)));
             let timer = Number(minutos);
-    
-            console.log(`La ruta saldrá de ${temp._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`);
-            answer.push(`La ruta saldrá de ${temp._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`)
+
+            answer.push(`La ruta saldrá de ${temp._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`);
 
             do {
-
                 if (timer < temp._siguiente._minutos) {
                     break;
                 }
-
                 date.setTime(date.getTime() + (temp._siguiente._minutos * 60000));
-
-                console.log(`La ruta llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`);
                 answer.push(`La ruta llegará a ${temp._siguiente._nombre} a las ${this.timeFormatted(date.getHours(), date.getMinutes())}`)
-
                 timer -= temp._siguiente._minutos;
-                
                 temp = temp._siguiente;
             } while (timer > 0);
         } else {
@@ -149,7 +128,6 @@ export default class Ruta {
     }
 
     timeFormatted(hours, minutes) {
-
         console.log(hours);
         console.log(minutes);
 
@@ -163,5 +141,4 @@ export default class Ruta {
         }
         return `${hora}:${minutos}`
     }
-
 }
