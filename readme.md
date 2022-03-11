@@ -1,7 +1,7 @@
 # Estructura de Datos
 
 
-### Demo: https://listascirculares.pudin.net/
+### Demo: https://diego-gentner-estructura-de-datos-2021.github.io/10-Listas-circulares/
 
 ### Profesor: Humberto Ramírez González
 
